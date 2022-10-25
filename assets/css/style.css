@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+  --hours-color: #b5b5b5;
+  --text-color: #201c1c;
+  --name-color: #000000;
+  --status-entered: #DCDCDC;
+  --status-reservedly: #FFDEDE;
+
+
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  width: 375px;
+  height: 667px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f3f3f3;
+  margin: 0px auto;
+}
+
+header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF;
+}
+header img {
+  margin-left: 20px;
+}
+header ion-icon {
+  font-size: 45px;
+  margin-right: 20px;
+}
+
+ul {
+  height: 100%;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--text-color);
+  margin: 10px 0px;
+  padding: 0px 9px;
+}
+
+
+.hours {
+  color: var(--hours-color);
+}
+
+strong {
+  color: var(--name-color);
+  font-weight: 700;
+}
+
+.reservedly {
+background-color: var(--status-reservedly);
+}
+
+.entered {
+  background-color: var(--status-entered);
+}
+
+footer {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+footer label {
+  display: block;
+  width: 70%;
+  cursor: pointer;
+  color: #505050;
+}
+
+input {
+  border: none;
+  width: 100%;
+  margin-bottom: 5px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: black;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  opacity: 1;
+}
+
+footer ion-icon {
+  font-size: 26px;
+}
