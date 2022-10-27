@@ -13,39 +13,18 @@
       <header>
         <img src="./assets/images/logo.svg" alt="" /><ion-icon name="people"></ion-icon>
       </header>
-      <ul>
-        <li class="entered">
-          <p><span class="hours">(09:21:45)</span> <strong>João</strong> entra na sala...</p>
-        </li>
-        <li>
-          <p><span class="hours">(09:22:28)</span> <strong>João</strong> para <strong>Todos</strong>: Bom dia</p>
-        </li>
-
-        <li>
-          <p><span class="hours">(09:22:33)</span> <strong>Maria</strong> para <strong>João</strong>: Oi João :)</p>
-        </li>
-
-        <li>
-          <p><span class="hours">(09:22:38)</span> <strong>João</strong> para <strong>Maria</strong>: Oii Maria</p>
-        </li>
-
-        <li class="reservedly">
-          <p><span class="hours">(09:22:48)</span> <strong>João</strong> reservadamente para <strong>Maria</strong>: Gatinha quer tc?</p>
-        </li>
-
-        <li class="entered">
-          <p><span class="hours">(09:22:53)</span> <strong>Maria</strong>  sai da sala...</p>
-        </li>
+      <ul id="message-box">  
       </ul>
       <footer>
         <label for="input">
           <input type="text" id="input" placeholder="Escreva aqui..." />
           reservadamente para julia
         </label>
-        <ion-icon name="paper-plane-outline"></ion-icon>
+        <ion-icon onclick="enviarMensagem()" name="paper-plane-outline"></ion-icon>
       </footer>
     </main>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/assets/javascripts/script.js"></script>
   </body>
 </html>
