@@ -4,14 +4,69 @@
   --hours-color: #b5b5b5;
   --text-color: #201c1c;
   --name-color: #000000;
-  --status-entered: #DCDCDC;
-  --status-reservedly: #FFDEDE;
-
-
+  --status-entered: #dcdcdc;
+  --status-reservedly: #ffdede;
 }
 
 body {
   font-family: "Roboto", sans-serif;
+}
+
+.login-overlay {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #f3f3f3;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+.hidden {
+  display: none;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  height: 50vh;
+  margin: 0px auto;
+}
+
+.form img {
+  width: 130px;
+  height: 92px;
+  margin-bottom: 94px;
+}
+.form input {
+  width: 260px;
+  height: 54px;
+  background: #ffffff;
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: black;
+}
+.form input::placeholder {
+  text-align: center;
+}
+
+.form button {
+  width: 109px;
+  height: 49px;
+  margin-top: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  color: #696969;
 }
 
 main {
@@ -30,7 +85,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
 }
 header img {
@@ -58,7 +113,6 @@ li {
   border-radius: 2px;
 }
 
-
 .hours {
   color: var(--hours-color);
 }
@@ -74,7 +128,7 @@ strong {
 }
 
 .reservedly {
-background-color: var(--status-reservedly);
+  background-color: var(--status-reservedly);
 }
 
 .entered {
@@ -98,7 +152,7 @@ footer label {
   color: #505050;
 }
 
-input {
+.input-message {
   border: none;
   width: 100%;
   margin-bottom: 5px;
@@ -108,15 +162,15 @@ input {
   color: black;
 }
 
-input:focus {
+.input-message:focus {
   outline: none;
 }
 
-input::placeholder {
+.input-message::placeholder {
   opacity: 1;
 }
 
-input:focus::placeholder {
+.input-message:focus::placeholder {
   color: transparent;
 }
 

@@ -1,17 +1,31 @@
-let messageBox = document.getElementById("message-box");
-const input = document.getElementById("input");
-const userName = prompt("whats your name?");
-const nameObject = { name: userName };
-let lockScroll = false
+const messageBox = document.getElementById("message-box");
+const overlay = document.getElementById("overlay");
+const inputMsg = document.getElementById("input-message");
+const inputLogin = document.getElementById("input-login");
+let objectUsername = {};
+let lockScroll = false;
 
 function getUserName() {
-  const getName = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nameObject);
-  getName.then(getPromise);
-  // getName.catch(getUserName)
+  objectUsername.name = inputLogin.value;
+  const getName = axios.post(
+    "https://mock-api.driven.com.br/api/v6/uol/participants",
+    objectUsername
+  );
+  getName.then(() => {
+    inputLogin.value = "";
+    overlay.classList.add("hidden");
+    getPromise();
+  });
+  getName.catch(escolherOutroNome);
+}
+
+function escolherOutroNome(error) {
+  if (error.response.status === 400) inputLogin.value = "";
+  inputLogin.placeholder = "Esse nome já estava em uso";
 }
 
 function keepConnection() {
-  axios.post("https://mock-api.driven.com.br/api/v6/uol/status", nameObject);
+  axios.post("https://mock-api.driven.com.br/api/v6/uol/status", objectUsername);
 }
 
 function getPromise() {
@@ -21,7 +35,7 @@ function getPromise() {
 
 function getMessage(message) {
   messageBox.innerHTML = "";
-  for (let i = 0; i < message.data.length; i++) {
+  for (let i = 80; i < message.data.length; i++) {
     if (message.data[i].type === "status") {
       messageBox.innerHTML += `
     <li class="entered">
@@ -43,23 +57,31 @@ function getMessage(message) {
     return false;
   }
   messageBox.lastElementChild.scrollIntoView();
-  lockScroll = true
+  lockScroll = true;
 }
 
 function enviarMensagem() {
-  const inputMessage = {
-    from: userName,
+  const objectMessage = {
+    from: objectUsername.name,
     to: "Todos",
-    text: input.value,
+    text: inputMsg.value,
     type: "message",
   };
   const enviarMessage = axios.post(
     "https://mock-api.driven.com.br/api/v6/uol/messages",
-    inputMessage
+    objectMessage
   );
   enviarMessage.then(getPromise);
-  input.value = "";
+  inputMsg.value = "";
+  messageBox.lastElementChild.scrollIntoView();
 }
-getUserName();
+
+inputMsg.addEventListener("keyup", function (e) {
+  if (e.key === "Enter") {
+    enviarMensagem();
+  }
+});
+
+// getUserName();
 setInterval(getPromise, 3000);
 setInterval(keepConnection, 5000);

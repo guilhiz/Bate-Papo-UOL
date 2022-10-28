@@ -9,16 +9,22 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
+    <section class="login-overlay" id="overlay">
+      <div class="form">
+        <img src="./assets/images/logo.svg" alt="logo do UOl" />
+        <input id="input-login" type="text" placeholder="digite seu nome" />
+        <button onclick="getUserName()">Entrar</button>
+      </div>
+    </section>
+
     <main>
       <header>
         <img src="./assets/images/logo.svg" alt="" /><ion-icon name="people"></ion-icon>
       </header>
-      <ul id="message-box">  
-      </ul>
+      <ul id="message-box"></ul>
       <footer>
-        <label for="input">
-          <input type="text" id="input" placeholder="Escreva aqui..." />
-          reservadamente para julia
+        <label for="input-message">
+          <input class="input-message" type="text" id="input-message" placeholder="Escreva aqui..." />
         </label>
         <ion-icon onclick="enviarMensagem()" name="paper-plane-outline"></ion-icon>
       </footer>
