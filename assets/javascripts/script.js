@@ -67,6 +67,9 @@ function sendMessage() {
   };
   const sendMessage = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", objectMessage);
   sendMessage.then(requestMessage);
+  sendMessage.catch(() => {
+    window.location.reload()
+  })
   inputMsg.value = "";
   messageBox.lastElementChild.scrollIntoView();
 }
