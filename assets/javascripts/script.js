@@ -1,5 +1,6 @@
 const messageBox = document.getElementById("message-box");
 const overlay = document.getElementById("overlay");
+const loadingPage = document.getElementById("loading")
 const inputMsg = document.getElementById("input-message");
 const inputLogin = document.getElementById("input-login");
 let objectUsername = {};
@@ -10,8 +11,12 @@ function getUsername() {
   const getName = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", objectUsername);
   getName.then(() => {
     inputLogin.value = "";
-    overlay.classList.add("hidden");
-    requestMessage();
+    loadingPage.classList.remove("hidden")
+    requestMessage()
+    setTimeout(() => {
+      overlay.classList.add("hidden");
+      loadingPage.classList.add("hidden")
+    }, 3000)
   });
   getName.catch((error) => {
     if (error.response.status === 400) {
@@ -28,21 +33,21 @@ function requestMessage() {
 
 function getMessage(message) {
   messageBox.innerHTML = "";
-  for (let i = 80; i < message.data.length; i++) {
+  for (let i = 50; i < message.data.length; i++) {
     if (message.data[i].type === "status") {
       messageBox.innerHTML += `
     <li class="entered">
-      <p><span class="hours">${message.data[i].time}</span> <strong>${message.data[i].from}</strong> para <strong>${message.data[i].to}</strong>: ${message.data[i].text}</p>
+      <p><span class="hours">${message.data[i].time}</span>&nbsp <strong>${message.data[i].from}</strong> para <strong>${message.data[i].to}</strong>:&nbsp ${message.data[i].text}</p>
     </li>`;
     } else if (message.data[i].type === "message") {
       messageBox.innerHTML += `
     <li>
-      <p><span class="hours">${message.data[i].time}</span> <strong>${message.data[i].from}</strong> para <strong>${message.data[i].to}</strong>: ${message.data[i].text}</p>
+      <p><span class="hours">${message.data[i].time}</span>&nbsp <strong>${message.data[i].from}</strong> para <strong>${message.data[i].to}</strong>:&nbsp ${message.data[i].text}</p>
     </li>`;
-    } else if (message.data[i].type === "private_message" && message.data[i].to === objectUsername.name) {
+    } else if (message.data[i].type === "private_message" && (message.data[i].to === objectUsername.name || message.data[i].from === objectUsername)) {
       messageBox.innerHTML += `
     <li class="reservedly">
-      <p><span class="hours">${message.data[i].time}</span> <strong>${message.data[i].from}</strong> para <strong>${message.data[i].to}</strong>: ${message.data[i].text}</p>
+      <p><span class="hours">${message.data[i].time}</span>&nbsp <strong>${message.data[i].from}</strong> para <strong>${message.data[i].to}</strong>:&nbsp ${message.data[i].text}</p>
     </li>`;
     }
   }

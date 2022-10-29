@@ -12,11 +12,17 @@
   <body>
     <section class="login-overlay" id="overlay">
       <div class="form">
-        <img src="./assets/images/logo.svg" alt="logo do UOl" />
-        <input id="input-login" type="text" placeholder="digite seu nome" />
-        <button onclick="getUsername()">Entrar</button>
+        <img class="logo" src="./assets/images/logo.svg" alt="logo do UOl" />
+        <input id="input-login" type="text" placeholder="digite seu nome" data-identifier="enter-name"/>
+        <button onclick="getUsername()" data-identifier="start">Entrar</button>
+      </div>
+      <div class="page-loading hidden" id="loading">
+        <img class="logo" src="./assets/images/logo.svg" alt="logo do UOl" />
+        <img src="./assets/images/spinner.gif" alt="loading gif">
+        <p>Entrando...</p>
       </div>
     </section>
+    
 
     <main>
       <header>
