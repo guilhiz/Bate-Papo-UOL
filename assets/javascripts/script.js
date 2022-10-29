@@ -7,27 +7,18 @@ let lockScroll = false;
 
 function getUsername() {
   objectUsername.name = inputLogin.value;
-  const getName = axios.post(
-    "https://mock-api.driven.com.br/api/v6/uol/participants",
-    objectUsername
-  );
+  const getName = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", objectUsername);
   getName.then(() => {
     inputLogin.value = "";
     overlay.classList.add("hidden");
     requestMessage();
   });
-  getName.catch(chooseAnotherName);
-}
-
-function chooseAnotherName(error) {
-  if (error.response.status === 400) {
-    inputLogin.value = "";
-    inputLogin.placeholder = "That name is already in use";
-  }
-}
-
-function keepConnection() {
-  axios.post("https://mock-api.driven.com.br/api/v6/uol/status", objectUsername);
+  getName.catch((error) => {
+    if (error.response.status === 400) {
+      inputLogin.value = "";
+      inputLogin.placeholder = "That name is already in use";
+    }
+  });
 }
 
 function requestMessage() {
@@ -48,10 +39,7 @@ function getMessage(message) {
     <li>
       <p><span class="hours">${message.data[i].time}</span> <strong>${message.data[i].from}</strong> para <strong>${message.data[i].to}</strong>: ${message.data[i].text}</p>
     </li>`;
-    } else if (
-      message.data[i].type === "private_message" &&
-      message.data[i].to === objectUsername.name
-    ) {
+    } else if (message.data[i].type === "private_message" && message.data[i].to === objectUsername.name) {
       messageBox.innerHTML += `
     <li class="reservedly">
       <p><span class="hours">${message.data[i].time}</span> <strong>${message.data[i].from}</strong> para <strong>${message.data[i].to}</strong>: ${message.data[i].text}</p>
@@ -72,10 +60,7 @@ function sendMessage() {
     text: inputMsg.value,
     type: "message",
   };
-  const sendMessage = axios.post(
-    "https://mock-api.driven.com.br/api/v6/uol/messages",
-    objectMessage
-  );
+  const sendMessage = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", objectMessage);
   sendMessage.then(requestMessage);
   inputMsg.value = "";
   messageBox.lastElementChild.scrollIntoView();
@@ -86,10 +71,12 @@ inputMsg.addEventListener("keyup", function (e) {
     sendMessage();
   }
 });
-inputLogin.addEventListener("keyup", function (event) {
-  if (event.key === "Enter") {
+inputLogin.addEventListener("keyup", function (e) {
+  if (e.key === "Enter") {
     getUsername();
   }
 });
 setInterval(requestMessage, 3000);
-setInterval(keepConnection, 5000);
+setInterval(() => {
+  axios.post("https://mock-api.driven.com.br/api/v6/uol/status", objectUsername);
+}, 5000);
