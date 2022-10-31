@@ -41,7 +41,7 @@ function getMessage(message) {
   if (lastMessageBoxTime === lastMessageTime) return false;
 
   messageBox.innerHTML = "";
-  for (let i = 0; i < message.data.length; i++) {
+  for (let i = 50; i < message.data.length; i++) {
     if (message.data[i].type === "status") {
       messageBox.innerHTML += `
     <li class="entered">
@@ -58,7 +58,7 @@ function getMessage(message) {
     ) {
       messageBox.innerHTML += `
     <li class="reservedly">
-      <p><span class="hours">${message.data[i].time}</span>&nbsp <strong>${message.data[i].from}</strong> para <strong>${message.data[i].to}</strong>:&nbsp ${message.data[i].text}</p>
+      <p><span class="hours">${message.data[i].time}</span>&nbsp <strong>${message.data[i].from}</strong> reservadamente para <strong>${message.data[i].to}</strong>:&nbsp ${message.data[i].text}</p>
     </li>`;
     }
   }
