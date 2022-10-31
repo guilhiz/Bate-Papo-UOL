@@ -80,6 +80,7 @@ function sendMessage() {
   );
   promiseSendMessage.then(requestMessage);
   promiseSendMessage.catch(() => {
+    alert("Sorry, you've been disconnected")
     window.location.reload();
   });
   inputMsg.value = "";
