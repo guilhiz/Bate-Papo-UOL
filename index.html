@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./assets/images/uol-icon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/images/uol-icon.png" type="image/x-icon" />
     <title>Bate papo UOL</title>
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="/assets/css/style.css" />
@@ -13,16 +13,20 @@
     <section class="login-overlay" id="overlay">
       <div class="form">
         <img class="logo" src="./assets/images/logo.svg" alt="logo do UOl" />
-        <input id="input-login" type="text" placeholder="digite seu nome" data-identifier="enter-name"/>
+        <input
+          id="input-login"
+          type="text"
+          placeholder="digite seu nome"
+          data-identifier="enter-name"
+        />
         <button onclick="getUsername()" data-identifier="start">Entrar</button>
       </div>
       <div class="page-loading hidden" id="loading">
         <img class="logo" src="./assets/images/logo.svg" alt="logo do UOl" />
-        <img src="./assets/images/spinner.gif" alt="loading gif">
+        <img src="./assets/images/spinner.gif" alt="loading gif" />
         <p>Entrando...</p>
       </div>
     </section>
-    
 
     <main>
       <header>
@@ -31,7 +35,12 @@
       <ul id="message-box"></ul>
       <footer>
         <label for="input-message">
-          <input class="input-message" type="text" id="input-message" placeholder="Escreva aqui..." />
+          <input
+            class="input-message"
+            type="text"
+            id="input-message"
+            placeholder="Escreva aqui..."
+          />
         </label>
         <ion-icon onclick="sendMessage()" name="paper-plane-outline"></ion-icon>
       </footer>

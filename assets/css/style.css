@@ -4,8 +4,8 @@
   --hours-color: #b5b5b5;
   --text-color: #201c1c;
   --name-color: #000000;
-  --status-entered: #DCDCDC;
-  --status-reservedly: #FFDEDE;
+  --status-entered: #dcdcdc;
+  --status-reservedly: #ffdede;
 }
 
 body {
@@ -81,7 +81,7 @@ body {
   width: 300px;
   margin-top: -90px;
 }
-.page-loading  p{
+.page-loading p {
   font-weight: 400;
   font-size: 20px;
   line-height: 25px;
